@@ -58,6 +58,9 @@ Console.WriteLine($"Sum: {sum}");
 
 ## Future?
 
+This can be cool because we could quickly and easily make small modifications for companies.
+Of course, Lua & JavaScript are equally good as well.
+
 ```csharp
 Events.subscribe(PayCalculatedEvent)
     .filter(e => e.Employee.Country == "NZ")
