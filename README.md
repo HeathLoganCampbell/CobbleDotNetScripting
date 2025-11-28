@@ -74,6 +74,19 @@ Events.subscribe(PayCalculatedEvent)
             }
         }
     });
+
+Events.subscribe(TimesheetImportedEvent)
+    .filter(e => e.Employee.IsHourly)
+    .handler(e => {
+        foreach (var day in e.Timesheet.Days())
+        {
+            var hours = e.Timesheet.Hours(day);
+
+            // Auto deduct 30-minute unpaid break for long shifts
+            if (hours > 6)
+                e.Timesheet.SetHours(day, hours - 0.5m);
+        }
+    });
 ```
 
 ## Dependencies
