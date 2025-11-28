@@ -56,6 +56,26 @@ var sum = numbers.Sum();
 Console.WriteLine($"Sum: {sum}");
 ```
 
+## Future?
+
+```
+Events.subscribe(PayCalculatedEvent)
+    .filter(e => e.Employee.Country == "NZ")
+    .handler(e => {
+        foreach (var day in e.Timesheet.Days())
+        {
+            var hours = e.Timesheet.Hours(day);
+            var isHoliday  = e.Timesheet.Calendar.IsPublicHoliday(day);
+
+            if (isHoliday)
+            {
+                e.Gross += hours * e.Employee.HourlyRate * 1.5m;
+                e.Gross += 8 * e.Employee.HourlyRate;
+            }
+        }
+    });
+```
+
 ## Dependencies
 
 - [Microsoft.CodeAnalysis.CSharp.Scripting](https://www.nuget.org/packages/Microsoft.CodeAnalysis.CSharp.Scripting/) v5.0.0 - Roslyn C# scripting API
