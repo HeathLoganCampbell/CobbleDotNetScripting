@@ -73,7 +73,6 @@ Events.subscribe(PayCalculatedEvent)
             if (isHoliday)
             {
                 e.Gross += hours * e.Employee.HourlyRate * 1.5m;
-                e.Gross += 8 * e.Employee.HourlyRate;
             }
         }
     });
