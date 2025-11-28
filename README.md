@@ -58,7 +58,7 @@ Console.WriteLine($"Sum: {sum}");
 
 ## Future?
 
-```
+```csharp
 Events.subscribe(PayCalculatedEvent)
     .filter(e => e.Employee.Country == "NZ")
     .handler(e => {
